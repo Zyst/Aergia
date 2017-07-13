@@ -1,13 +1,15 @@
-import React from "react";
-import { Route, IndexRoute } from "react-router";
+/* eslint flowtype-errors/show-errors: 0 */
+import React from 'react';
+import { Switch, Route } from 'react-router';
+import App from './containers/App';
+import HomePage from './containers/HomePage';
+import CounterPage from './containers/CounterPage';
 
-import App from "./containers/App";
-import LoginPage from "./containers/LoginPage";
-import LoggedInPage from "./containers/LoggedInPage";
-
-export default (
-  <Route path="/" component={App}>
-    <IndexRoute component={LoginPage} />
-    <Route path="loggedin" component={LoggedInPage} />
-  </Route>
+export default () => (
+  <App>
+    <Switch>
+      <Route path="/counter" component={CounterPage} />
+      <Route path="/" component={HomePage} />
+    </Switch>
+  </App>
 );
