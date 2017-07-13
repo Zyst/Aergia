@@ -57,15 +57,10 @@
       ]
     },
     "win": {
-      "target": [
-        "nsis"
-      ]
+      "target": ["nsis"]
     },
     "linux": {
-      "target": [
-        "deb",
-        "AppImage"
-      ]
+      "target": ["deb", "AppImage"]
     },
     "directories": {
       "buildResources": "resources",
@@ -83,41 +78,24 @@
   },
   "license": "MIT",
   "lint-staged": {
-    "*.{ js, jsx, css, less, scss, json }": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.{js,jsx,css,less,scss,json}": ["prettier --write", "git add"]
   },
   "bugs": {
     "url": "https://github.com/zyst/Aergia/issues"
   },
-  "keywords": [
-    "electron",
-    "react",
-    "redux",
-    "flow",
-    "sass",
-    "webpack"
-  ],
+  "keywords": ["electron", "react", "redux", "flow", "sass", "webpack"],
   "homepage": "https://github.com/zyst/Aergia#readme",
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/fileMock.js",
       "\\.(css|less|sass|scss)$": "identity-obj-proxy"
     },
-    "moduleFileExtensions": [
-      "js"
-    ],
-    "moduleDirectories": [
-      "node_modules",
-      "app/node_modules"
-    ],
+    "moduleFileExtensions": ["js"],
+    "moduleDirectories": ["node_modules", "app/node_modules"],
     "transform": {
       "^.+\\.js$": "babel-jest"
     },
-    "setupFiles": [
-      "./internals/scripts/CheckBuiltsExist.js"
-    ]
+    "setupFiles": ["./internals/scripts/CheckBuiltsExist.js"]
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
