@@ -40,3 +40,6 @@ script:
   - yarn package
   - yarn test
   - yarn test-e2e
+
+notifications:
+  email: false
