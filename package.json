@@ -83,7 +83,7 @@
   },
   "license": "MIT",
   "lint-staged": {
-    "*.js": [
+    "*.{ js, jsx, css, less, scss, json }": [
       "prettier --write",
       "git add"
     ]
