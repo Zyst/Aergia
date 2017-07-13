@@ -2,25 +2,25 @@
  * Builds the DLL for development electron renderer process
  */
 
-import webpack from 'webpack';
-import path from 'path';
-import merge from 'webpack-merge';
-import baseConfig from './webpack.config.base';
-import { dependencies } from './package.json';
-import CheckNodeEnv from './internals/scripts/CheckNodeEnv';
+import webpack from "webpack";
+import path from "path";
+import merge from "webpack-merge";
+import baseConfig from "./webpack.config.base";
+import { dependencies } from "./package.json";
+import CheckNodeEnv from "./internals/scripts/CheckNodeEnv";
 
-CheckNodeEnv('development');
+CheckNodeEnv("development");
 
-const dist = path.resolve(process.cwd(), 'dll');
+const dist = path.resolve(process.cwd(), "dll");
 
 export default merge.smart(baseConfig, {
   context: process.cwd(),
 
-  devtool: 'eval',
+  devtool: "eval",
 
-  target: 'electron-renderer',
+  target: "electron-renderer",
 
-  externals: ['fsevents', 'crypto-browserify'],
+  externals: ["fsevents", "crypto-browserify"],
 
   /**
    * @HACK: Copy and pasted from renderer dev config. Consider merging these
@@ -32,13 +32,13 @@ export default merge.smart(baseConfig, {
         test: /\.global\.css$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: "style-loader"
           },
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
-              sourceMap: true,
-            },
+              sourceMap: true
+            }
           }
         ]
       },
@@ -46,17 +46,17 @@ export default merge.smart(baseConfig, {
         test: /^((?!\.global).)*\.css$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: "style-loader"
           },
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               modules: true,
               sourceMap: true,
               importLoaders: 1,
-              localIdentName: '[name]__[local]__[hash:base64:5]',
+              localIdentName: "[name]__[local]__[hash:base64:5]"
             }
-          },
+          }
         ]
       },
       // Add SASS support  - compile all .global.scss files and pipe it to style.css
@@ -64,16 +64,16 @@ export default merge.smart(baseConfig, {
         test: /\.global\.scss$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: "style-loader"
           },
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
-              sourceMap: true,
-            },
+              sourceMap: true
+            }
           },
           {
-            loader: 'sass-loader'
+            loader: "sass-loader"
           }
         ]
       },
@@ -82,19 +82,19 @@ export default merge.smart(baseConfig, {
         test: /^((?!\.global).)*\.scss$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: "style-loader"
           },
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               modules: true,
               sourceMap: true,
               importLoaders: 1,
-              localIdentName: '[name]__[local]__[hash:base64:5]',
+              localIdentName: "[name]__[local]__[hash:base64:5]"
             }
           },
           {
-            loader: 'sass-loader'
+            loader: "sass-loader"
           }
         ]
       },
@@ -102,21 +102,21 @@ export default merge.smart(baseConfig, {
       {
         test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
         use: {
-          loader: 'url-loader',
+          loader: "url-loader",
           options: {
             limit: 10000,
-            mimetype: 'application/font-woff',
+            mimetype: "application/font-woff"
           }
-        },
+        }
       },
       // WOFF2 Font
       {
         test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
         use: {
-          loader: 'url-loader',
+          loader: "url-loader",
           options: {
             limit: 10000,
-            mimetype: 'application/font-woff',
+            mimetype: "application/font-woff"
           }
         }
       },
@@ -124,62 +124,58 @@ export default merge.smart(baseConfig, {
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
         use: {
-          loader: 'url-loader',
+          loader: "url-loader",
           options: {
             limit: 10000,
-            mimetype: 'application/octet-stream'
+            mimetype: "application/octet-stream"
           }
         }
       },
       // EOT Font
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        use: 'file-loader',
+        use: "file-loader"
       },
       // SVG Font
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         use: {
-          loader: 'url-loader',
+          loader: "url-loader",
           options: {
             limit: 10000,
-            mimetype: 'image/svg+xml',
+            mimetype: "image/svg+xml"
           }
         }
       },
       // Common Image Formats
       {
         test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/,
-        use: 'url-loader',
+        use: "url-loader"
       }
     ]
   },
 
   resolve: {
-    modules: [
-      'app',
-    ],
+    modules: ["app"]
   },
 
   entry: {
-    renderer: (
-      Object
-        .keys(dependencies || {})
-        .filter(dependency => dependency !== 'font-awesome')
+    renderer: Object.keys(dependencies || {}).filter(
+      dependency => dependency !== "font-awesome"
     )
   },
 
   output: {
-    library: 'renderer',
+    library: "renderer",
     path: dist,
-    filename: '[name].dev.dll.js',
-    libraryTarget: 'var'
+    filename: "[name].dev.dll.js",
+    libraryTarget: "var"
   },
 
   plugins: [
     new webpack.DllPlugin({
-      path: path.join(dist, '[name].json'),
-      name: '[name]',
+      path: path.join(dist, "[name].json"),
+      name: "[name]"
     }),
 
     /**
@@ -192,17 +188,19 @@ export default merge.smart(baseConfig, {
      * development checks
      */
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+      "process.env.NODE_ENV": JSON.stringify(
+        process.env.NODE_ENV || "development"
+      )
     }),
 
     new webpack.LoaderOptionsPlugin({
       debug: true,
       options: {
-        context: path.resolve(process.cwd(), 'app'),
+        context: path.resolve(process.cwd(), "app"),
         output: {
-          path: path.resolve(process.cwd(), 'dll'),
-        },
-      },
+          path: path.resolve(process.cwd(), "dll")
+        }
+      }
     })
-  ],
+  ]
 });
