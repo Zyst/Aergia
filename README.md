@@ -37,4 +37,8 @@ yarn package
 yarn package-all
 ```
 
+----------------------------
+
 This project was bootstrapped using [electron-react-boilerplate](https://github.com/chentsulin/electron-react-boilerplate.git)
+
+[MIT License](LICENSE)
