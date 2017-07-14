@@ -13,6 +13,12 @@ Aergia is a Pomodoro app.
 yarn dev
 ```
 
+### Unit tests TDD
+
+```
+yarn test-watch
+```
+
 ### Unit tests
 
 ```
@@ -23,6 +29,11 @@ yarn test
 
 ```
 yarn test-e2e
+```
+### Unit tests coverage
+
+```
+yarn test-coverage
 ```
 
 ### Build
