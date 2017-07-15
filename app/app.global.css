@@ -8,6 +8,7 @@
  * Background: #b0dfef
  * White: #fffeff
  * Dark Text: #7c7c7c
+ * Lighter Dark Text: #a8a8a8
  * Light Text: #cdcdcd
  */
 
@@ -86,4 +87,9 @@ select:focus {
   border-bottom: 2px solid rgba(0, 100, 148, 0.4);
   border-left: 0 solid #fff;
   border-right: 0 solid #fff;
+}
+
+::-webkit-input-placeholder {
+  font-style: italic;
+  color: #a8a8a8;
 }
