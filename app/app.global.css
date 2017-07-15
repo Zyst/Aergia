@@ -51,6 +51,11 @@ button.button-primary {
   border-radius: 0;
 }
 
+button.button-primary:hover {
+  background-color: #caf9ff;
+  border-color: #caf9ff;
+}
+
 /* Full line input  */
 input[type="email"],
 input[type="number"],
