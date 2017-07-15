@@ -23,7 +23,7 @@ export default function tasks(
   action: actionType
 ): taskStateType {
   switch (action.type) {
-    case ADD_TASK: {
+    case ADD_TASK:
       // If a task with that name doesn't exist already
       if (state.filter(task => task.name === action.name).length === 0) {
         return [
@@ -38,38 +38,22 @@ export default function tasks(
         ];
       }
       return state;
-    }
 
-    case REMOVE_TASK: {
+    case REMOVE_TASK:
       return state.filter(task => task.name !== action.name);
-    }
 
-    case ACTIVATE_TASK: {
-      // If the task exists
-      if (state.filter(task => task.name === action.name)) {
-        return state.map(task => {
-          if (task.name === action.name) {
-            return {
-              ...task,
-              active: true
-            };
-          }
-          return task;
-        });
+    case ACTIVATE_TASK:
+      return state.map(task => {
+        if (task.name === action.name) {
+          return {
+            ...task,
+            active: true
+          };
+        }
+        return task;
+      });
 
-        // [
-        //   ...state.filter(task => task.name !== action.name),
-        //   {
-        //     ...item[0],
-        //     active: true
-        //   }
-        // ];
-      }
+    default:
       return state;
-    }
-
-    default: {
-      return state;
-    }
   }
 }
