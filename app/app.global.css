@@ -1,2 +1,73 @@
 @import "~font-awesome/css/font-awesome.css";
 @import "~skeleton-css/css/skeleton.css";
+
+/**
+ * Colors:
+ *
+ * Main accent: #006494
+ * Background: #b0dfef
+ * White: #fffeff
+ * Dark Text: #7c7c7c
+ * Light Text: #cdcdcd
+ */
+
+body {
+  background-color: #b0dfef;
+  color: #7c7c7c;
+  margin: 0;
+}
+
+.timer {
+  color: #006494;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Full line input  */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  background-color: #fffeff;
+  border-top: 2px solid rgba(0, 100, 148, 0.4);
+  border-bottom: 2px solid rgba(0, 100, 148, 0.4);
+  border-left: 0 solid #fff;
+  border-right: 0 solid #fff;
+  border-radius: 0;
+}
+
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  outline-style: none;
+  box-shadow: none;
+  border-top: 2px solid rgba(0, 100, 148, 0.4);
+  border-bottom: 2px solid rgba(0, 100, 148, 0.4);
+  border-left: 0 solid #fff;
+  border-right: 0 solid #fff;
+}
+
+/* Restore body margin to the rest of the elements we use  */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+button {
+  margin: 8px;
+}
