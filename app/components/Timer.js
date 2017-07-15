@@ -1,5 +1,5 @@
 import React from "react";
 
-const Timer = () => <div>timer lol</div>;
+const Timer = () => <h1>Timer</h1>;
 
 export default Timer;
