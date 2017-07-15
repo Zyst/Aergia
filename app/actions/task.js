@@ -1,15 +1,9 @@
 // @flow
+import type { actionType } from "../reducers/task";
+
 export const ADD_TASK = "ADD_TASK";
 export const REMOVE_TASK = "REMOVE_TASK";
-
-type actionType = {
-  type: string,
-  name: string,
-  currentProgress?: number,
-  totalPomodoros?: number,
-  stopped?: number,
-  active?: boolean
-};
+export const ACTIVATE_TASK = "ACTIVATE_TASK";
 
 export function addTask(name: string, totalPomodoros: number): actionType {
   return {
@@ -22,6 +16,13 @@ export function addTask(name: string, totalPomodoros: number): actionType {
 export function removeTask(name: string): actionType {
   return {
     type: REMOVE_TASK,
+    name
+  };
+}
+
+export function activateTask(name: string): actionType {
+  return {
+    type: ACTIVATE_TASK,
     name
   };
 }

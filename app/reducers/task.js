@@ -1,5 +1,5 @@
 // @flow
-import { ADD_TASK, REMOVE_TASK } from "../actions/task";
+import { ADD_TASK, REMOVE_TASK, ACTIVATE_TASK } from "../actions/task";
 
 export type taskStateType = Array<{
   name: string,
@@ -9,7 +9,7 @@ export type taskStateType = Array<{
   active?: boolean
 }>;
 
-type actionType = {
+export type actionType = {
   type: string,
   name: string,
   currentProgress?: number,
@@ -23,7 +23,7 @@ export default function tasks(
   action: actionType
 ): taskStateType {
   switch (action.type) {
-    case ADD_TASK:
+    case ADD_TASK: {
       // If a task with that name doesn't exist already
       if (state.filter(task => task.name === action.name).length === 0) {
         return [
@@ -38,9 +38,38 @@ export default function tasks(
         ];
       }
       return state;
-    case REMOVE_TASK:
+    }
+
+    case REMOVE_TASK: {
       return state.filter(task => task.name !== action.name);
-    default:
+    }
+
+    case ACTIVATE_TASK: {
+      // If the task exists
+      if (state.filter(task => task.name === action.name)) {
+        return state.map(task => {
+          if (task.name === action.name) {
+            return {
+              ...task,
+              active: true
+            };
+          }
+          return task;
+        });
+
+        // [
+        //   ...state.filter(task => task.name !== action.name),
+        //   {
+        //     ...item[0],
+        //     active: true
+        //   }
+        // ];
+      }
       return state;
+    }
+
+    default: {
+      return state;
+    }
   }
 }
