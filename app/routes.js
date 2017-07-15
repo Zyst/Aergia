@@ -8,9 +8,9 @@ import Pomodoro from "./containers/Pomodoro";
 import CounterPage from "./containers/CounterPage";
 
 // The area called options could be fleshed out later, leaving it here so I don't forget
+// <Navigation /> goes right under <App>
 export default () =>
   <App>
-    <Navigation />
     <Switch>
       <Route path="/" component={Pomodoro} />
       <Route path="/options" component={Pomodoro} />
