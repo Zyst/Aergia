@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
 
-const Task = () => <p>Hi, I&apos;m a task</p>;
+const Task = () => <p>Save the world</p>;
 
 export default Task;

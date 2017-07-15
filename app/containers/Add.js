@@ -8,9 +8,7 @@ const Add = () => {
   // at a time
   const lolol = (
     <div>
-      <AddButton />
-      <p>One of these will be removed</p>
-      <AddInput />
+      {true ? <AddButton /> : <AddInput />}
     </div>
   );
 
