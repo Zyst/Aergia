@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import AddButton from "../components/AddButton";
 import AddInput from "../components/AddInput";
