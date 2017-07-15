@@ -8,6 +8,7 @@ const Add = () => {
   const lolol = (
     <div>
       <AddButton />
+      <p>One of these will be removed</p>
       <AddInput />
     </div>
   );
