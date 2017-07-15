@@ -13,6 +13,5 @@ export default () =>
   <App>
     <Switch>
       <Route path="/" component={Pomodoro} />
-      <Route path="/options" component={Pomodoro} />
     </Switch>
   </App>;
