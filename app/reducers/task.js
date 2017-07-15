@@ -3,16 +3,19 @@ import { ADD_TASK, REMOVE_TASK } from "../actions/task";
 
 export type taskStateType = Array<{
   name: string,
-  currentProgress: number,
-  totalPomodoros: number,
-  stopped: number,
-  active: boolean
+  currentProgress?: number,
+  totalPomodoros?: number,
+  stopped?: number,
+  active?: boolean
 }>;
 
 type actionType = {
   type: string,
   name: string,
-  totalPomodoros: number
+  currentProgress?: number,
+  totalPomodoros?: number,
+  stopped?: number,
+  active?: boolean
 };
 
 export default function tasks(
