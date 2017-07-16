@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actions add task should match snapshot 1`] = `
+Object {
+  "name": "hi",
+  "payload": Object {
+    "totalPomodoros": 3,
+  },
+  "type": "ADD_TASK",
+}
+`;

@@ -7,7 +7,7 @@ import rootReducer from "../reducers";
 
 const history = createBrowserHistory();
 const router = routerMiddleware(history);
-const enhancer: any = applyMiddleware(thunk, router);
+const enhancer = applyMiddleware(thunk, router);
 
 function configureStore(initialState: any) {
   return createStore(rootReducer, initialState, enhancer);
