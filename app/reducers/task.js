@@ -12,10 +12,12 @@ export type taskStateType = Array<{
 export type actionType = {
   type: string,
   name: string,
-  currentProgress?: number,
-  totalPomodoros?: number,
-  stopped?: number,
-  active?: boolean
+  payload: {
+    currentProgress?: number,
+    totalPomodoros?: number,
+    stopped?: number,
+    active?: boolean
+  }
 };
 
 export default function tasks(
@@ -31,7 +33,7 @@ export default function tasks(
           {
             name: action.name,
             currentProgress: 0,
-            totalPomodoros: action.totalPomodoros,
+            totalPomodoros: action.payload.totalPomodoros,
             stopped: 0,
             active: false
           }

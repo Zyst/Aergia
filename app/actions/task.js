@@ -9,20 +9,24 @@ export function addTask(name: string, totalPomodoros: number): actionType {
   return {
     type: ADD_TASK,
     name,
-    totalPomodoros
+    payload: {
+      totalPomodoros
+    }
   };
 }
 
 export function removeTask(name: string): actionType {
   return {
     type: REMOVE_TASK,
-    name
+    name,
+    payload: {}
   };
 }
 
 export function activateTask(name: string): actionType {
   return {
     type: ACTIVATE_TASK,
-    name
+    name,
+    payload: {}
   };
 }
