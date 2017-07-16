@@ -1,5 +1,10 @@
 // @flow
-import { ADD_TASK, REMOVE_TASK, ACTIVATE_TASK } from "../actions/task";
+import {
+  ADD_TASK,
+  REMOVE_TASK,
+  ACTIVATE_TASK,
+  DEACTIVATE_TASK
+} from "../actions/task";
 
 export type taskStateType = Array<{
   name: string,
@@ -50,6 +55,17 @@ export default function tasks(
           return {
             ...task,
             active: true
+          };
+        }
+        return task;
+      });
+
+    case DEACTIVATE_TASK:
+      return state.map(task => {
+        if (task.name === action.name) {
+          return {
+            ...task,
+            active: false
           };
         }
         return task;
