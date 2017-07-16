@@ -27,7 +27,7 @@ export type actionType = {
 };
 
 export default function tasks(
-  state: taskStateType,
+  state: taskStateType = [],
   action: actionType
 ): taskStateType {
   switch (action.type) {
