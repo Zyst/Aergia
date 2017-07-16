@@ -5,7 +5,8 @@ import Root from "./containers/Root";
 import { configureStore, history } from "./store/configureStore";
 import "./app.global.css";
 
-const store = configureStore();
+// TODO: Get old session here
+const store = configureStore([]);
 
 render(
   <AppContainer>
