@@ -1,6 +1,7 @@
 // @flow
 import {
   ADD_TASK,
+  COMPLETE_TASK,
   REMOVE_TASK,
   ACTIVATE_TASK,
   DEACTIVATE_TASK
@@ -45,6 +46,10 @@ export default function tasks(
         ];
       }
       return state;
+
+    // Although this is currently the same as remove, that will change later
+    case COMPLETE_TASK:
+      return state.filter(task => task.name !== action.name);
 
     case REMOVE_TASK:
       return state.filter(task => task.name !== action.name);
