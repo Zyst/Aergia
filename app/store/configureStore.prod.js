@@ -9,6 +9,7 @@ const history = createBrowserHistory();
 const router = routerMiddleware(history);
 const enhancer = applyMiddleware(thunk, router);
 
+/* eslint-disable flowtype/no-weak-types */
 function configureStore(initialState: any) {
   return createStore(rootReducer, initialState, enhancer);
 }
