@@ -32,8 +32,8 @@ export default function tasks(
 ): taskStateType {
   switch (action.type) {
     case ADD_TASK:
-      // If a task with that name doesn't exist already
       if (
+        // If a task with that name doesn't exist already
         state.filter(task => task.name === action.name).length === 0 &&
         action.payload
       ) {
