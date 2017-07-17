@@ -6,7 +6,7 @@ import { configureStore, history } from "./store/configureStore";
 import "./app.global.css";
 
 // TODO: Get old session here
-const store = configureStore([]);
+const store = configureStore();
 
 render(
   <AppContainer>

@@ -8,7 +8,7 @@ import {
 } from "../actions/task";
 
 export type taskStateType = Array<{
-  name: string,
+  name?: string,
   currentProgress?: number,
   totalPomodoros?: number,
   stopped?: number,
@@ -17,8 +17,8 @@ export type taskStateType = Array<{
 
 export type actionType = {
   type: string,
-  name: string,
-  payload: {
+  name?: string,
+  payload?: {
     currentProgress?: number,
     totalPomodoros?: number,
     stopped?: number,
@@ -33,7 +33,10 @@ export default function tasks(
   switch (action.type) {
     case ADD_TASK:
       // If a task with that name doesn't exist already
-      if (state.filter(task => task.name === action.name).length === 0) {
+      if (
+        state.filter(task => task.name === action.name).length === 0 &&
+        action.payload
+      ) {
         return [
           ...state,
           {
