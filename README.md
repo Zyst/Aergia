@@ -5,4 +5,51 @@
 
 Aergia is a Pomodoro app.
 
+## Commands
+
+### Development
+
+```
+yarn dev
+```
+
+### Unit tests TDD
+
+```
+yarn test-watch
+```
+
+### Unit tests
+
+```
+yarn test
+```
+
+### E2E tests
+
+```
+yarn test-e2e
+```
+### Unit tests coverage
+
+```
+yarn test-coverage
+```
+
+### Build
+
+```
+yarn package
+```
+
+### Build all
+
+```
+yarn package-all
+```
+
+----------------------------
+
 This project was bootstrapped using [electron-react-boilerplate](https://github.com/chentsulin/electron-react-boilerplate.git)
+
+[MIT License](LICENSE)

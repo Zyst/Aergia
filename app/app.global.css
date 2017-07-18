@@ -1,43 +1,100 @@
 @import "~font-awesome/css/font-awesome.css";
+@import "~skeleton-css/css/skeleton.css";
+
+/**
+ * Colors:
+ *
+ * Main accent: #006494
+ * Background: #b0dfef
+ * White: #fffeff
+ * Dark Text: #7c7c7c
+ * Lighter Dark Text: #a8a8a8
+ * Light Text: #cdcdcd
+ */
 
 body {
-  position: relative;
-  color: white;
-  height: 100vh;
-  background-color: #232c39;
-  background-image: linear-gradient(
-    45deg,
-    rgba(0, 216, 255, 0.5) 10%,
-    rgba(0, 1, 127, 0.7)
-  );
-  font-family: Arial, Helvetica, Helvetica Neue, serif;
-  overflow-y: hidden;
-}
-
-h2 {
+  background-color: #fffeff;
+  color: #7c7c7c;
   margin: 0;
-  font-size: 2.25rem;
+}
+
+/* Restore body margin to the rest of the elements we use  */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+button {
+  margin: 8px;
+}
+
+/* Pomodoro timer styling */
+.timer {
+  color: #006494;
+  text-align: center;
   font-weight: bold;
-  letter-spacing: -0.025em;
-  color: #fff;
 }
 
-p {
-  font-size: 24px;
+/* Thanks bootstrap */
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-li {
-  list-style: none;
+button.button-primary {
+  background-color: #b0dfef;
+  color: #fffeff;
+  border-color: #b0dfef;
+  border-radius: 0;
 }
 
-a {
-  color: white;
-  opacity: 0.75;
-  text-decoration: none;
+button.button-primary:hover {
+  background-color: #caf9ff;
+  border-color: #caf9ff;
 }
 
-a:hover {
-  opacity: 1;
-  text-decoration: none;
-  cursor: pointer;
+/* Full line input  */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  background-color: rgba(0, 100, 148, 0.05);
+  border-top: 2px solid rgba(0, 100, 148, 0.2);
+  border-bottom: 2px solid rgba(0, 100, 148, 0.2);
+  border-left: 0 solid #fff;
+  border-right: 0 solid #fff;
+  border-radius: 0;
+}
+
+/* These override chromium's default focus styling */
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  outline-style: none;
+  box-shadow: none;
+  border-top: 2px solid rgba(0, 100, 148, 0.4);
+  border-bottom: 2px solid rgba(0, 100, 148, 0.4);
+  border-left: 0 solid #fff;
+  border-right: 0 solid #fff;
+}
+
+::-webkit-input-placeholder {
+  font-style: italic;
+  color: #a8a8a8;
 }
