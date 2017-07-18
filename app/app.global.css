@@ -38,12 +38,12 @@ button {
 }
 
 h1.timer {
-  font-size: 5.0rem;
+  font-size: 5rem;
 }
 
 @media (min-width: 550px) {
   h1.timer {
-    font-size: 6.0rem;
+    font-size: 6rem;
   }
 }
 
