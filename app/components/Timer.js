@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 
 type Props = {
-  active: boolean,
+  active?: boolean,
   minutes: number
 };
 
