@@ -1,34 +1,37 @@
 // @flow
 import React, { Component } from "react";
 
+type Props = {
+  active: boolean,
+  time: number
+};
+
+type State = {
+  time: number,
+  active: boolean,
+  timerInterval?: number
+};
+
 class Timer extends Component {
-  props: {
-    active: boolean,
-    time: number
-  };
+  props: Props;
 
-  timer: number;
+  state: State;
 
-  state: {
-    time: number
-  };
-
-  constructor(props: props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       // Time is in seconds
-      time: props.time * 60,
-      active: props.active
+      time: this.props.time * 60,
+      active: this.props.active,
+      timerInterval: this.state.active
+        ? setInterval(() => this.reduceTime(), 1000)
+        : -1
     };
   }
 
-  componentDidMount(): void {
-    this.timer = setInterval(() => this.reduceTime(), 1000);
-  }
-
   componentWillUnmount(): void {
-    clearInterval(this.timer);
+    clearInterval(this.state.timerInterval);
   }
 
   reduceTime(): void {
@@ -47,7 +50,7 @@ class Timer extends Component {
 }
 
 function displayTime(time: number): string {
-  return time.toString();
+  return zeroPadding(time);
 }
 
 function zeroPadding(seconds: number) {
