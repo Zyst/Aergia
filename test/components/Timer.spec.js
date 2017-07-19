@@ -31,6 +31,22 @@ describe("Timer component", () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it("Should call a timeout in handleTimer active path", () => {
+    jest.useFakeTimers();
+    /* eslint-disable no-unused-vars */
+    const { component } = setup();
+
+    expect(setTimeout.call.length).toBe(1);
+  });
+
+  it("Should reset time if we are not active", () => {
+    const component = shallow(<Timer minutes={25} />);
+    component.state().time = 1;
+    component.instance().handleTimer();
+
+    expect(component.state().time).toBe(25 * 60);
+  });
+
   it("Should handle time ticking", () => {
     const { component } = setup();
 
