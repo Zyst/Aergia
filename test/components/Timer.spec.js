@@ -31,6 +31,13 @@ describe("Timer component", () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it("Should call setInterval when active", () => {
+    jest.useFakeTimers();
+    const { component } = setup();
+
+    expect(setInterval.mock.calls.length).toBe(1);
+  });
+
   it("Should have a timerInterval when active", () => {
     const { component } = setup();
 
@@ -43,6 +50,42 @@ describe("Timer component", () => {
     const component = shallow(<Timer minutes={10} />);
 
     expect(component.state().timerInterval).toBe(-1);
+  });
+
+  it("Should handle time ticking", () => {
+    const { component } = setup();
+
+    // We are 25 minutes at first
+    expect(component.state().time).toBe(25 * 60);
+
+    component.instance().reduceTime();
+    // If we reduce we should be 25 minutes - 1 second
+    expect(component.state().time).toBe(25 * 60 - 1);
+  });
+
+  it("Shouldn't tick time if we're at 0", () => {
+    const { component } = setup();
+
+    // We check that we tick at 1
+    component.state().time = 1;
+    expect(component.state().time).toBe(1);
+
+    // We check that we tick down to 0
+    component.instance().reduceTime();
+    expect(component.state().time).toBe(0);
+
+    // We check that we don't tick below 0
+    component.instance().reduceTime();
+    expect(component.state().time).toBe(0);
+  });
+
+  it("should clear the interval when componentWillUnmount is called", () => {
+    jest.useFakeTimers();
+
+    const { component } = setup();
+
+    component.unmount();
+    expect(clearInterval.mock.calls.length).toBe(1);
   });
 
   describe("Zero padding", () => {
