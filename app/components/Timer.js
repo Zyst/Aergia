@@ -55,7 +55,7 @@ class Timer extends Component {
   }
 
   render() {
-    // On run we start to see if our timer needs to be handled
+    // On render we start to see if our timer needs to be handled
     this.handleTimer();
 
     return (
