@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 
 type Props = {
-  active?: boolean,
+  active: boolean,
   minutes: number
 };
 
@@ -15,6 +15,10 @@ type State = {
 class Timer extends Component {
   props: Props;
   state: State;
+
+  static defaultProps = {
+    active: false
+  };
 
   constructor(props: Props) {
     super(props);
