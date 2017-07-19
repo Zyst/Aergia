@@ -23,7 +23,7 @@ class Timer extends Component {
       // Time is in seconds
       time: this.props.minutes * 60,
       active: this.props.active,
-      timerInterval: this.state.active
+      timerInterval: this.props.active
         ? setInterval(() => this.reduceTime(), 1000)
         : -1
     };
@@ -48,11 +48,28 @@ class Timer extends Component {
   }
 }
 
-function displayTime(time: number): string {
-  return zeroPadding(time);
+/**
+ * Gets time in seconds, returns a formatted string which we'll use to display
+ * the timer
+ *
+ * @export
+ * @param {number} time in seconds
+ * @returns {string}
+ */
+export function displayTime(time: number): string {
+  const hours = Math.floor(time / 3600);
+
+  const remaining = time - hours * 3600;
+
+  const minutes = Math.floor(remaining / 60);
+  const seconds = remaining - minutes * 60;
+
+  if (hours > 0)
+    return `${hours}:${zeroPadding(minutes)}:${zeroPadding(seconds)}`;
+  return `${zeroPadding(minutes)}:${zeroPadding(seconds)}`;
 }
 
-function zeroPadding(seconds: number) {
+export function zeroPadding(seconds: number): string {
   const secondsString = String(seconds);
 
   if (secondsString.length > 1) {
