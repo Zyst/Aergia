@@ -6,7 +6,7 @@ import Tasks from "../containers/Tasks";
 
 const Pomodoro = () =>
   <div>
-    <Timer active minutes={61} />
+    <Timer active minutes={25} />
     <Add />
     <Tasks />
   </div>;
