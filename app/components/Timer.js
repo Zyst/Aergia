@@ -7,9 +7,7 @@ type Props = {
 };
 
 type State = {
-  time: number,
-  active: boolean,
-  timerInterval: number
+  time: number
 };
 
 class Timer extends Component {
@@ -25,16 +23,29 @@ class Timer extends Component {
 
     this.state = {
       // Time is in seconds
-      time: this.props.minutes * 60,
-      active: this.props.active,
-      timerInterval: this.props.active
-        ? setInterval(() => this.reduceTime(), 1000)
-        : -1
+      time: this.props.minutes * 60
     };
   }
 
-  componentWillUnmount(): void {
-    clearInterval(this.state.timerInterval);
+  /**
+   * Calls itself continuously as long as we are active, and handles
+   * reducing time and making sure our state is "Accurate"
+   *
+   * @memberof Timer
+   */
+  handleTimer(): void {
+    if (this.props.active) {
+      // We call ourselves again
+      setTimeout(this.handleTimer(), 1000);
+
+      // And we reduce time
+      this.reduceTime();
+
+      // We check if we need to reset our time
+    } else if (this.state.time !== this.props.minutes * 60) {
+      // We set back the time state to the initial value
+      this.setState({ time: this.props.minutes * 60 });
+    }
   }
 
   reduceTime(): void {
@@ -44,6 +55,9 @@ class Timer extends Component {
   }
 
   render() {
+    // On run we start to see if our timer needs to be handled
+    this.handleTimer();
+
     return (
       <h1 className="timer">
         {displayTime(this.state.time)}
