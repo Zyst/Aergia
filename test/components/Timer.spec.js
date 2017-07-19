@@ -33,6 +33,7 @@ describe("Timer component", () => {
 
   it("Should call setInterval when active", () => {
     jest.useFakeTimers();
+    /* eslint-disable no-unused-vars */
     const { component } = setup();
 
     expect(setInterval.mock.calls.length).toBe(1);
