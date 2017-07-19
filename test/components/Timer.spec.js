@@ -31,28 +31,6 @@ describe("Timer component", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it("Should call setInterval when active", () => {
-    jest.useFakeTimers();
-    /* eslint-disable no-unused-vars */
-    const { component } = setup();
-
-    expect(setInterval.mock.calls.length).toBe(1);
-  });
-
-  it("Should have a timerInterval when active", () => {
-    const { component } = setup();
-
-    // From: https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timer-initialisation-steps
-    // If previous handle was provided, let handle be previous handle; otherwise, let handle be a user-agent-defined integer that is greater than zero that will identify the timeout to be set by this call in the list of active timers.
-    expect(component.state().timerInterval).toBeGreaterThan(0);
-  });
-
-  it("Should have a timerInterval of -1 when inactive", () => {
-    const component = shallow(<Timer minutes={10} />);
-
-    expect(component.state().timerInterval).toBe(-1);
-  });
-
   it("Should handle time ticking", () => {
     const { component } = setup();
 
@@ -78,15 +56,6 @@ describe("Timer component", () => {
     // We check that we don't tick below 0
     component.instance().reduceTime();
     expect(component.state().time).toBe(0);
-  });
-
-  it("should clear the interval when componentWillUnmount is called", () => {
-    jest.useFakeTimers();
-
-    const { component } = setup();
-
-    component.unmount();
-    expect(clearInterval.mock.calls.length).toBe(1);
   });
 
   describe("Zero padding", () => {
