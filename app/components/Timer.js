@@ -28,20 +28,14 @@ class Timer extends Component {
   }
 
   /**
-   * Calls itself continuously as long as we are active, and handles
-   * reducing time and making sure our state is "Accurate"
+   * Calls itself continuously as long as we are active, and handles pathing
+   * into reducing time and making sure our state is accurate
    *
    * @memberof Timer
    */
   handleTimer(): void {
     if (this.props.active) {
-      // We call ourselves again
-      setTimeout(this.handleTimer(), 1000);
-
-      // And we reduce time
-      this.reduceTime();
-
-      // We check if we need to reset our time
+      setTimeout(this.reduceTime, 1000);
     } else if (this.state.time !== this.props.minutes * 60) {
       // We set back the time state to the initial value
       this.setState({ time: this.props.minutes * 60 });
