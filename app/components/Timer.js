@@ -3,18 +3,17 @@ import React, { Component } from "react";
 
 type Props = {
   active: boolean,
-  time: number
+  minutes: number
 };
 
 type State = {
   time: number,
   active: boolean,
-  timerInterval?: number
+  timerInterval: number
 };
 
 class Timer extends Component {
   props: Props;
-
   state: State;
 
   constructor(props: Props) {
@@ -22,7 +21,7 @@ class Timer extends Component {
 
     this.state = {
       // Time is in seconds
-      time: this.props.time * 60,
+      time: this.props.minutes * 60,
       active: this.props.active,
       timerInterval: this.state.active
         ? setInterval(() => this.reduceTime(), 1000)
