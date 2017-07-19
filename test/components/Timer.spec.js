@@ -2,7 +2,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 // import { BrowserRouter as Router } from "react-router-dom";
-// import renderer from "react-test-renderer";
+import renderer from "react-test-renderer";
 import Timer, { zeroPadding, displayTime } from "../../app/components/Timer";
 
 const setup = () => {
@@ -24,7 +24,11 @@ describe("Timer component", () => {
     expect(timer.text()).toBe("25:00");
   });
 
-  it("Should match snapshot");
+  it("Should match snapshot", () => {
+    const tree = renderer.create(<Timer active minutes={15} />).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 
   describe("Zero padding", () => {
     it("Should be defined", () => {
