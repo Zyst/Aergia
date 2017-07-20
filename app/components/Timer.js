@@ -13,6 +13,7 @@ type State = {
 class Timer extends Component {
   props: Props;
   state: State;
+  timeout: number;
 
   static defaultProps = {
     active: false
@@ -21,10 +22,16 @@ class Timer extends Component {
   constructor(props: Props) {
     super(props);
 
+    this.timeout = -1;
+
     this.state = {
       // Time is in seconds
       time: this.props.minutes * 60
     };
+  }
+
+  componentWillUpdate() {
+    clearTimeout(this.timeout);
   }
 
   /**
@@ -35,7 +42,9 @@ class Timer extends Component {
    */
   handleTimer(): void {
     if (this.props.active) {
-      setTimeout(this.reduceTime, 1000);
+      this.timeout = setTimeout(() => {
+        this.reduceTime();
+      }, 1000);
     } else if (this.state.time !== this.props.minutes * 60) {
       // We set back the time state to the initial value
       this.setState({ time: this.props.minutes * 60 });
