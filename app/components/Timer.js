@@ -7,7 +7,8 @@ type Props = {
 };
 
 type State = {
-  time: number
+  time: number,
+  break: boolean
 };
 
 class Timer extends Component {
@@ -26,7 +27,8 @@ class Timer extends Component {
 
     this.state = {
       // Time is in seconds
-      time: this.props.minutes * 60
+      time: this.props.minutes * 60,
+      break: true
     };
   }
 
@@ -66,8 +68,10 @@ class Timer extends Component {
   }
 
   render() {
+    const classes = this.state.break ? "timer break" : "timer";
+
     return (
-      <h1 className="timer">
+      <h1 className={classes}>
         {displayTime(this.state.time)}
       </h1>
     );
