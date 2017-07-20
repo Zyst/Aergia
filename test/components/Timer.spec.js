@@ -6,7 +6,7 @@ import renderer from "react-test-renderer";
 import Timer, { zeroPadding, displayTime } from "../../app/components/Timer";
 
 const setup = () => {
-  const component = shallow(<Timer active minutes={25} />);
+  const component = shallow(<Timer active minutes={25} break={5} />);
 
   return {
     component,
@@ -26,7 +26,9 @@ describe("Timer component", () => {
   });
 
   it("Should match snapshot", () => {
-    const tree = renderer.create(<Timer active minutes={15} />).toJSON();
+    const tree = renderer
+      .create(<Timer active minutes={15} break={3} />)
+      .toJSON();
 
     expect(tree).toMatchSnapshot();
   });
@@ -40,38 +42,46 @@ describe("Timer component", () => {
   });
 
   it("Should reset time if we are not active", () => {
-    const component = shallow(<Timer minutes={25} />);
+    const component = shallow(<Timer minutes={25} break={5} />);
     component.state().time = 1;
     component.instance().handleTimer();
 
     expect(component.state().time).toBe(25 * 60);
   });
 
+  it("Should reset break if we are not active", () => {
+    const component = shallow(<Timer minutes={25} break={5} />);
+    component.state().break = true;
+    component.instance().handleTimer();
+
+    expect(component.state().break).toBe(false);
+  });
+
   it("Should handle time ticking", () => {
     const { component } = setup();
-
-    // We are 25 minutes at first
-    expect(component.state().time).toBe(25 * 60);
 
     component.instance().reduceTime();
     // If we reduce we should be 25 minutes - 1 second
     expect(component.state().time).toBe(25 * 60 - 1);
   });
 
-  it("Shouldn't tick time if we're at 0", () => {
+  it("Should start break if we go below 1 on normal", () => {
     const { component } = setup();
 
-    // We check that we tick at 1
     component.state().time = 1;
-    expect(component.state().time).toBe(1);
 
-    // We check that we tick down to 0
     component.instance().reduceTime();
-    expect(component.state().time).toBe(0);
+    expect(component.state().time).toBe(5 * 60);
+  });
 
-    // We check that we don't tick below 0
+  it("Should start normal timer if we go below 1 on break", () => {
+    const { component } = setup();
+
+    component.state().time = 1;
+    component.state().break = true;
+
     component.instance().reduceTime();
-    expect(component.state().time).toBe(0);
+    expect(component.state().time).toBe(25 * 60);
   });
 
   describe("Zero padding", () => {
@@ -105,7 +115,7 @@ describe("Timer component", () => {
       expect(displayTime(3599)).toBe("59:59");
     });
 
-    it("Should return hours properly (No Zero pad)", () => {
+    it("Should return hours properly", () => {
       expect(displayTime(3666)).toBe("1:01:06");
       expect(displayTime(36000)).toBe("10:00:00");
     });

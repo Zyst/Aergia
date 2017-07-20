@@ -56,9 +56,12 @@ class Timer extends Component {
       this.timeout = setTimeout(() => {
         this.reduceTime();
       }, 1000);
-    } else if (this.state.time !== this.props.minutes * 60) {
-      // We set back the time state to the initial value
-      this.setState({ time: this.props.minutes * 60 });
+    } else if (
+      this.state.time !== this.props.minutes * 60 ||
+      this.state.break
+    ) {
+      // We set back the state to the initial value
+      this.setState({ time: this.props.minutes * 60, break: false });
     }
   }
 
