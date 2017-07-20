@@ -37,6 +37,10 @@ button {
   font-weight: bold;
 }
 
+.break {
+  color: #00863a;
+}
+
 h1.timer {
   font-size: 5rem;
 }
