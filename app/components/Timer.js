@@ -3,7 +3,8 @@ import React, { Component } from "react";
 
 type Props = {
   active: boolean,
-  minutes: number
+  minutes: number,
+  break: number
 };
 
 type State = {
@@ -28,7 +29,7 @@ class Timer extends Component {
     this.state = {
       // Time is in seconds
       time: this.props.minutes * 60,
-      break: true
+      break: false
     };
   }
 
@@ -61,9 +62,25 @@ class Timer extends Component {
     }
   }
 
+  handleRestart(): void {
+    if (this.state.break) {
+      this.setState({
+        time: this.props.minutes * 60,
+        break: false
+      });
+    } else {
+      this.setState({
+        time: this.props.break * 60,
+        break: true
+      });
+    }
+  }
+
   reduceTime(): void {
-    if (this.state.time > 0) {
+    if (this.state.time > 1) {
       this.setState({ time: this.state.time - 1 });
+    } else {
+      this.handleRestart();
     }
   }
 
