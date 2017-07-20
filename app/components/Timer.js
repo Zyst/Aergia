@@ -30,8 +30,16 @@ class Timer extends Component {
     };
   }
 
+  componentDidMount() {
+    this.handleTimer();
+  }
+
   componentWillUpdate() {
     clearTimeout(this.timeout);
+  }
+
+  componentDidUpdate() {
+    this.handleTimer();
   }
 
   /**
@@ -58,9 +66,6 @@ class Timer extends Component {
   }
 
   render() {
-    // On render we start to see if our timer needs to be handled
-    this.handleTimer();
-
     return (
       <h1 className="timer">
         {displayTime(this.state.time)}
