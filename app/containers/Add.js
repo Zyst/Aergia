@@ -19,11 +19,17 @@ class Add extends Component {
   }
 
   render() {
-    const adding = this.state.adding
-      ? <AddInput adding={this.state.adding} />
-      : <AddButton adding={this.state.adding} />;
-
-    return adding;
+    return this.state.adding
+      ? <AddInput
+          cancel={() => {
+            this.setState({ adding: false });
+          }}
+        />
+      : <AddButton
+          add={() => {
+            this.setState({ adding: true });
+          }}
+        />;
   }
 }
 
