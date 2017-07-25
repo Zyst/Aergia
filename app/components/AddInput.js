@@ -11,7 +11,7 @@ type Props = {
 
 /* eslint-disable import/no-mutable-exports */
 let AddInput = ({ cancel, dispatch }: Props) => {
-  let task: HTMLInputElement;
+  let task: ?HTMLInputElement;
 
   return (
     <form
