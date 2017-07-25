@@ -52,8 +52,6 @@ export default function tasks(
 
     // Although this is currently the same as remove, that will change later
     case COMPLETE_TASK:
-      return state.filter(task => task.name !== action.name);
-
     case REMOVE_TASK:
       return state.filter(task => task.name !== action.name);
 
