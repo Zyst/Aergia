@@ -8,6 +8,7 @@ type Props = {
   dispatch: Dispatch
 };
 
+/* eslint-disable import/no-mutable-exports */
 let AddInput = ({ cancel, dispatch }: Props) => {
   let task;
 
