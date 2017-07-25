@@ -18,7 +18,7 @@ describe("Add Button component", () => {
   it("Should render a button", () => {
     const button = shallow(<AddButton add={jest.fn()} />).find("button");
 
-    expect(button).toBeDefined();
+    expect(button).toHaveLength(1);
   });
 
   it("Should call add when clicked", () => {
