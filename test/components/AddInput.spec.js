@@ -1,27 +1,24 @@
 import { spy } from "sinon";
 import React from "react";
-import { shallow } from "enzyme";
+import { render } from "enzyme";
 import renderer from "react-test-renderer";
-import { Provider } from "react-redux";
-import * as configure from "../../app/store/configureStore.prod";
+import { configureStore } from "../../app/store/configureStore.prod";
 import AddInput from "../../app/components/AddInput";
 
 function setup() {
   const actions = {
     cancel: spy()
   };
-  const store = configure.configureStore();
+  const store = configureStore();
 
-  const component = shallow(
-    <Provider store={store}>
-      <AddInput cancel={actions.cancel} />
-    </Provider>
-  );
+  const component = render(<AddInput store={store} {...actions} />);
 
   return {
     component,
     actions,
-    store
+    store,
+    form: component.find("form"),
+    input: component.find("input")
   };
 }
 
@@ -34,13 +31,21 @@ describe("Add Input component", () => {
     const { actions, store } = setup();
 
     const tree = renderer
-      .create(
-        <Provider store={store}>
-          <AddInput cancel={actions.cancel} />
-        </Provider>
-      )
+      .create(<AddInput store={store} {...actions} />)
       .toJSON();
 
     expect(tree).toMatchSnapshot();
+  });
+
+  it("Should render a form", () => {
+    const { form } = setup();
+
+    expect(form).toHaveLength(1);
+  });
+
+  it("should render an input", () => {
+    const { input } = setup();
+
+    expect(input).toHaveLength(1);
   });
 });
