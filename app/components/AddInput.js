@@ -1,25 +1,40 @@
 // @flow
-import React, { Component } from "react";
+import React from "react";
+import { connect } from "react-redux";
+import { addTask } from "../actions/task";
 
 type Props = {
-  cancel: () => void
+  cancel: () => void,
+  dispatch: Dispatch
 };
 
-class AddInput extends Component {
-  props: Props;
+let AddInput = ({ cancel, dispatch }: Props) => {
+  let task;
 
-  constructor(props: Props) {
-    super(props);
-  }
+  return (
+    <form
+      onSubmit={e => {
+        e.preventDefault();
 
-  render() {
-    return (
-      <form>
-        {/* eslint-disable jsx-a11y/no-autofocus */}
-        <input type="text" autoFocus placeholder="Task name" />;
-      </form>
-    );
-  }
-}
+        if (task.value.trim()) {
+          dispatch(addTask(task.value.trim(), 1));
+
+          task.value = "";
+        }
+      }}
+    >
+      {/* eslint-disable jsx-a11y/no-autofocus */}
+      <input
+        ref={node => {
+          task = node;
+        }}
+        type="text"
+        autoFocus
+        placeholder="Task name"
+      />;
+    </form>
+  );
+};
+AddInput = connect()(AddInput);
 
 export default AddInput;
