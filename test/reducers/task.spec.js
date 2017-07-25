@@ -1,14 +1,23 @@
 import task from "../../app/reducers/task";
 import {} from "../../app/actions/task";
 
-describe("reducers", () => {
-  describe("task", () => {
-    it("should be defined", () => {
-      expect(task).toBeDefined();
-    });
+describe("task", () => {
+  const mockState = {
+    task: [
+      {
+        name: "Save the world",
+        currentProgress: 0,
+        totalPomodoros: 1,
+        stopped: 0,
+        active: false
+      }
+    ]
+  };
+  it("should be defined", () => {
+    expect(task).toBeDefined();
+  });
 
-    it("should handle initial state", () => {
-      expect(task(undefined, [])).toMatchSnapshot();
-    });
+  it("should handle initial state", () => {
+    expect(task(undefined, [])).toMatchSnapshot();
   });
 });
