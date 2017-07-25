@@ -2,17 +2,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addTask } from "../actions/task";
+import type { actionType } from "../reducers/task";
 
 type Props = {
   cancel: () => void,
-  dispatch: (action: {}) => void
+  dispatch: (action: actionType) => void
 };
 
 /* eslint-disable import/no-mutable-exports */
 let AddInput = ({ cancel, dispatch }: Props) => {
-  let task: {
-    value: string
-  };
+  let task: HTMLInputElement;
 
   return (
     <form
