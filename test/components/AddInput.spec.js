@@ -1,6 +1,6 @@
 import { spy } from "sinon";
 import React from "react";
-import { render } from "enzyme";
+import { render, mount } from "enzyme";
 import renderer from "react-test-renderer";
 import { configureStore } from "../../app/store/configureStore.prod";
 import AddInput from "../../app/components/AddInput";
@@ -47,5 +47,27 @@ describe("Add Input component", () => {
     const { input } = setup();
 
     expect(input).toHaveLength(1);
+  });
+
+  describe("form tests", () => {
+    it("should not submit the form with no input", () => {
+      const { store, actions } = setup();
+      const component = mount(<AddInput store={store} {...actions} />);
+      const form = component.find("form").first();
+
+      form.simulate("submit");
+      expect(actions.cancel.called).toBe(false);
+    });
+
+    it("should submit when we pass input", () => {
+      const { store, actions } = setup();
+      const component = mount(<AddInput store={store} {...actions} />);
+      const form = component.find("form").first();
+      const input = component.find("input").first();
+      input.node.value = "Test";
+
+      form.simulate("submit");
+      expect(actions.cancel.called).toBe(true);
+    });
   });
 });
