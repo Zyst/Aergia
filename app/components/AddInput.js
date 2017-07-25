@@ -21,6 +21,8 @@ let AddInput = ({ cancel, dispatch }: Props) => {
           dispatch(addTask(task.value.trim(), 1));
 
           task.value = "";
+
+          cancel();
         }
       }}
     >
