@@ -10,7 +10,9 @@ type Props = {
 
 /* eslint-disable import/no-mutable-exports */
 let AddInput = ({ cancel, dispatch }: Props) => {
-  let task: {};
+  let task: {
+    value: string
+  };
 
   return (
     <form

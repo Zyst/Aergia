@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add Input component should match snapshot 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <input
+    autoFocus={true}
+    placeholder="Task name"
+    type="text"
+  />
+  ;
+</form>
+`;
