@@ -5,12 +5,12 @@ import { addTask } from "../actions/task";
 
 type Props = {
   cancel: () => void,
-  dispatch: Dispatch
+  dispatch: (action: {}) => void
 };
 
 /* eslint-disable import/no-mutable-exports */
 let AddInput = ({ cancel, dispatch }: Props) => {
-  let task;
+  let task: {};
 
   return (
     <form
