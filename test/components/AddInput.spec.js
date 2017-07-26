@@ -44,7 +44,7 @@ describe("Add Input component", () => {
     );
 
     component.instance().addPomodoro();
-    expect(component.state().pomodoros).toBe(1);
+    expect(component.state().pomodoros).toBe(2);
   });
 
   it("should remove pomodoros", () => {
@@ -54,20 +54,20 @@ describe("Add Input component", () => {
     );
 
     component.instance().addPomodoro();
-    expect(component.state().pomodoros).toBe(1);
+    expect(component.state().pomodoros).toBe(2);
 
     component.instance().removePomodoro();
-    expect(component.state().pomodoros).toBe(0);
+    expect(component.state().pomodoros).toBe(1);
   });
 
-  it("should not remove pomodoros below 0", () => {
+  it("should not remove pomodoros below 1", () => {
     const { store, actions } = setup();
     const component = mount(
       <AddInput.WrappedComponent store={store} {...actions} />
     );
 
     component.instance().removePomodoro();
-    expect(component.state().pomodoros).toBe(0);
+    expect(component.state().pomodoros).toBe(1);
   });
 
   it("should render a form", () => {

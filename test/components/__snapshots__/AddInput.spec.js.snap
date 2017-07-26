@@ -6,9 +6,14 @@ exports[`Add Input component should match snapshot 1`] = `
 >
   <input
     autoFocus={true}
+    className="mousetrap"
     placeholder="Task name"
     type="text"
   />
   ;
+  <span>
+    1
+     Pomodoros
+  </span>
 </form>
 `;
