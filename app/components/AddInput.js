@@ -18,7 +18,7 @@ let AddInput = ({ cancel, dispatch }: Props) => {
       onSubmit={e => {
         e.preventDefault();
 
-        if (task.value.trim()) {
+        if (task && task.value.trim()) {
           dispatch(addTask(task.value.trim(), 1));
 
           task.value = "";
