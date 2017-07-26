@@ -2,8 +2,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Mousetrap from "mousetrap";
-import { addTask } from "../actions/task";
 import hotkeys from "../utils/hotkeys";
+import { addTask } from "../actions/task";
 import type { actionType } from "../reducers/task";
 
 type Props = {
@@ -35,11 +35,16 @@ class AddInput extends Component {
       e.preventDefault();
       this.removePomodoro();
     });
+    Mousetrap.bind(hotkeys.pomodoro.add.addInput.callCancel.key, e => {
+      e.preventDefault();
+      this.props.cancel();
+    });
   }
 
   componentWillUnmount() {
     Mousetrap.unbind(hotkeys.pomodoro.add.addInput.incrementPomodoros.key);
     Mousetrap.unbind(hotkeys.pomodoro.add.addInput.decrementPomodoros.key);
+    Mousetrap.unbind(hotkeys.pomodoro.add.addInput.callCancel.key);
   }
 
   addPomodoro() {
