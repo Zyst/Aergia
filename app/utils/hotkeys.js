@@ -1,24 +1,32 @@
-export default {
-  Pomodoro: {
-    Add: {
-      AddButton: {
+// @flow
+const hotkeys = {
+  pomodoro: {
+    add: {
+      addButton: {
         callAdd: {
-          key: "<Enter>"
+          key: "enter",
+          description: 'Calls the "add" function, sending us into the input'
         }
       },
-      AddInput: {
+      addInput: {
         callCancel: {
-          key: "<Esc>"
+          key: "escape",
+          description:
+            'Calls the "cancel" function, sending us back to the button'
         },
         incrementPomodoros: {
-          key: "Up"
+          key: "up",
+          description: "Increments the number of pomodoros a task will require"
         },
         decrementPomodoros: {
-          key: "Down"
+          key: "down",
+          description: "Decreases the number of pomodoros a task will require"
         }
       }
     },
-    Tasks: {}
+    tasks: {}
   },
-  Options: {}
+  options: {}
 };
+
+export default hotkeys;
