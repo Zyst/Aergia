@@ -24,8 +24,27 @@ class AddInput extends Component {
     };
   }
 
+  componentDidMount() {}
+
+  componentWillUnmount() {}
+
+  addPomodoro() {
+    this.setState({
+      pomodoros: this.state.pomodoros + 1
+    });
+  }
+
+  removePomodoro() {
+    if (this.state.pomodoros > 0) {
+      this.setState({
+        pomodoros: this.state.pomodoros - 1
+      });
+    }
+  }
+
   render() {
     let task: ?HTMLInputElement;
+
     return (
       <form
         onSubmit={e => {
