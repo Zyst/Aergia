@@ -22,7 +22,7 @@ class AddInput extends Component {
     super(props);
 
     this.state = {
-      pomodoros: 0
+      pomodoros: 1
     };
   }
 
@@ -49,7 +49,7 @@ class AddInput extends Component {
   }
 
   removePomodoro() {
-    if (this.state.pomodoros > 0) {
+    if (this.state.pomodoros > 1) {
       this.setState({
         pomodoros: this.state.pomodoros - 1
       });
@@ -85,6 +85,7 @@ class AddInput extends Component {
           autoFocus
           placeholder="Task name"
         />;
+        <span>{this.state.pomodoros} Pomodoros</span>
       </form>
     );
   }
