@@ -44,7 +44,6 @@ describe("Add Input component", () => {
     );
 
     component.instance().addPomodoro();
-
     expect(component.state().pomodoros).toBe(1);
   });
 
@@ -68,7 +67,6 @@ describe("Add Input component", () => {
     );
 
     component.instance().removePomodoro();
-
     expect(component.state().pomodoros).toBe(0);
   });
 
