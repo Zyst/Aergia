@@ -1,7 +1,9 @@
 // @flow
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Mousetrap from "mousetrap";
 import { addTask } from "../actions/task";
+import hotkeys from "../utils/hotkeys";
 import type { actionType } from "../reducers/task";
 
 type Props = {
@@ -24,9 +26,31 @@ class AddInput extends Component {
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    Mousetrap.bind(hotkeys.pomodoro.add.addInput.incrementPomodoros.key, e => {
+      e.preventDefault();
+      this.addPomodoro();
+    });
+    Mousetrap.bind(hotkeys.pomodoro.add.addInput.decrementPomodoros.key, e => {
+      e.preventDefault();
+      this.removePomodoro();
+    });
+  }
 
-  componentWillUnmount() {}
+  componentWillUnmount() {
+    Mousetrap.unbind(
+      hotkeys.pomodoro.add.addInput.incrementPomodoros.key,
+      () => {
+        this.addPomodoro();
+      }
+    );
+    Mousetrap.unbind(
+      hotkeys.pomodoro.add.addInput.decrementPomodoros.key,
+      () => {
+        this.removePomodoro();
+      }
+    );
+  }
 
   addPomodoro() {
     this.setState({
@@ -51,7 +75,9 @@ class AddInput extends Component {
           e.preventDefault();
 
           if (task && task.value.trim()) {
-            this.props.dispatch(addTask(task.value.trim(), 1));
+            this.props.dispatch(
+              addTask(task.value.trim(), this.state.pomodoros)
+            );
 
             task.value = "";
 
@@ -64,6 +90,7 @@ class AddInput extends Component {
           ref={node => {
             task = node;
           }}
+          className="mousetrap"
           type="text"
           autoFocus
           placeholder="Task name"
