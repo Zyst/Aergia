@@ -38,18 +38,8 @@ class AddInput extends Component {
   }
 
   componentWillUnmount() {
-    Mousetrap.unbind(
-      hotkeys.pomodoro.add.addInput.incrementPomodoros.key,
-      () => {
-        this.addPomodoro();
-      }
-    );
-    Mousetrap.unbind(
-      hotkeys.pomodoro.add.addInput.decrementPomodoros.key,
-      () => {
-        this.removePomodoro();
-      }
-    );
+    Mousetrap.unbind(hotkeys.pomodoro.add.addInput.incrementPomodoros.key);
+    Mousetrap.unbind(hotkeys.pomodoro.add.addInput.decrementPomodoros.key);
   }
 
   addPomodoro() {
