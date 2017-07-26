@@ -37,7 +37,42 @@ describe("Add Input component", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it("Should render a form", () => {
+  it("should add pomodoros", () => {
+    const { store, actions } = setup();
+    const component = mount(
+      <AddInput.WrappedComponent store={store} {...actions} />
+    );
+
+    component.instance().addPomodoro();
+
+    expect(component.state().pomodoros).toBe(1);
+  });
+
+  it("should remove pomodoros", () => {
+    const { store, actions } = setup();
+    const component = mount(
+      <AddInput.WrappedComponent store={store} {...actions} />
+    );
+
+    component.instance().addPomodoro();
+    expect(component.state().pomodoros).toBe(1);
+
+    component.instance().removePomodoro();
+    expect(component.state().pomodoros).toBe(0);
+  });
+
+  it("should not remove pomodoros below 0", () => {
+    const { store, actions } = setup();
+    const component = mount(
+      <AddInput.WrappedComponent store={store} {...actions} />
+    );
+
+    component.instance().removePomodoro();
+
+    expect(component.state().pomodoros).toBe(0);
+  });
+
+  it("should render a form", () => {
     const { form } = setup();
 
     expect(form).toHaveLength(1);
