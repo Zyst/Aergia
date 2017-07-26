@@ -8,7 +8,6 @@ type Props = {
   cancel: () => void,
   dispatch: (action: actionType) => void
 };
-
 type State = {
   pomodoros: number
 };
