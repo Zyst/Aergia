@@ -90,7 +90,9 @@ class AddInput extends Component {
           autoFocus
           placeholder="Task name"
         />;
-        <span>{this.state.pomodoros} Pomodoros</span>
+        <span className="pomodoro-placerholder">
+          {this.state.pomodoros} Pomodoros
+        </span>
       </form>
     );
   }
