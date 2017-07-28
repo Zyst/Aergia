@@ -22,17 +22,19 @@ const Task = ({
   activateTask,
   deactivateTask
 }: Props) => {
-  const styles = task.active
+  const { name, stopped } = task.active
     ? {
-        name: "task-active-name"
+        name: "task-active-name",
+        stopped: "task-active-stopped u-pull-right"
       }
     : {
-        name: "task-name"
+        name: "task-name",
+        stopped: "task-stopped u-pull-right"
       };
 
   return (
     <div className="container">
-      <span className={styles.name}>
+      <span className={name}>
         {task.name}
       </span>
 
@@ -40,8 +42,8 @@ const Task = ({
         {task.currentProgress}/{task.totalPomodoros}
       </span>
 
-      {!task.stopped
-        ? <span className="task-stopped u-pull-right">
+      {task.stopped
+        ? <span className={stopped}>
             Stopped {task.stopped} times
           </span>
         : ""}
