@@ -45,7 +45,8 @@
     "react/prefer-stateless-function": "off",
     "react/jsx-wrap-multilines": "off",
     "react/jsx-closing-bracket-location": "off",
-    "react/jsx-indent-props": "off"
+    "react/jsx-indent-props": "off",
+    "react/jsx-indent": "off"
   },
   "plugins": [
     "flowtype",
