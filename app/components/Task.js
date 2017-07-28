@@ -21,11 +21,32 @@ const Task = ({
   removeTask,
   activateTask,
   deactivateTask
-}: Props) =>
-  <div>
-    <h2>
-      {task.name}
-    </h2>
-  </div>;
+}: Props) => {
+  const styles = task.active
+    ? {
+        name: "task-active-name"
+      }
+    : {
+        name: "task-name"
+      };
+
+  return (
+    <div className="container">
+      <span className={styles.name}>
+        {task.name}
+      </span>
+
+      <span className="u-pull-right">
+        {task.currentProgress}/{task.totalPomodoros}
+      </span>
+
+      {!task.stopped
+        ? <span className="task-stopped u-pull-right">
+            Stopped {task.stopped} times
+          </span>
+        : ""}
+    </div>
+  );
+};
 
 export default Task;
