@@ -10,7 +10,7 @@
  * Dark Text: #7c7c7c
  * Lighter Dark Text: #a8a8a8
  * Light Text: #cdcdcd
- * Errors: #bc2700
+ * Errors: #bc2700 & #ea7d00
  */
 
 body {
@@ -114,13 +114,36 @@ select:focus {
   color: #a8a8a8;
 }
 
+.pomodoro-placerholder {
+  margin: 1em;
+}
+
+/**
+ * Active and inactive divs
+ */
+.tasks {
+  padding: 0.7em;
+  margin-top: 2em;
+}
+
+.active-tasks {
+  background-color: #006494;
+  border-top: 2px solid rgba(176, 223, 239, 0.4);
+  border-bottom: 2px solid rgba(176, 223, 239, 0.4);
+  color: #cdcdcd;
+}
+
 span.task-active-name {
   font-weight: 500;
-  color: #006494;
 }
 
 span.task-name {
   font-weight: 500;
+}
+
+span.task-active-stopped {
+  color: #ea7d00;
+  padding-right: 1em;
 }
 
 span.task-stopped {
