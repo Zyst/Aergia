@@ -14,9 +14,21 @@ type Props = {
 const Tasks = (props: Props) => {
   const { tasks, ...dispatches } = props;
 
+  const activeTasks = tasks.filter(task => task.active);
+  const inactiveTasks = tasks.filter(task => !task.active);
+
   return (
     <div>
-      {tasks.map(task => <Task key={task.name} task={task} {...dispatches} />)}
+      <div className="tasks active-tasks">
+        {activeTasks.map(task =>
+          <Task key={task.name} task={task} {...dispatches} />
+        )}
+      </div>
+      <div className="tasks inactive-tasks">
+        {inactiveTasks.map(task =>
+          <Task key={task.name} task={task} {...dispatches} />
+        )}
+      </div>
     </div>
   );
 };
