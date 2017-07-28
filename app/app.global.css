@@ -10,6 +10,7 @@
  * Dark Text: #7c7c7c
  * Lighter Dark Text: #a8a8a8
  * Light Text: #cdcdcd
+ * Errors: #bc2700
  */
 
 body {
@@ -111,4 +112,18 @@ select:focus {
 ::-webkit-input-placeholder {
   font-style: italic;
   color: #a8a8a8;
+}
+
+span.task-active-name {
+  font-weight: 500;
+  color: #006494;
+}
+
+span.task-name {
+  font-weight: 500;
+}
+
+span.task-stopped {
+  color: #bc2700;
+  padding-right: 1em;
 }
