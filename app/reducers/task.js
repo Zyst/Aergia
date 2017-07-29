@@ -27,7 +27,22 @@ export type actionType = {
 };
 
 export default function tasks(
-  state: taskStateType = [],
+  state: taskStateType = [
+    {
+      name: "Testing",
+      currentProgress: 0,
+      totalPomodoros: 1,
+      stopped: 0,
+      active: false
+    },
+    {
+      name: "Active test",
+      currentProgress: 1,
+      totalPomodoros: 3,
+      stopped: 1,
+      active: true
+    }
+  ],
   action: actionType
 ): taskStateType {
   switch (action.type) {

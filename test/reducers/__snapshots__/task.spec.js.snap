@@ -1,3 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`task should handle initial state 1`] = `Array []`;
+exports[`task should handle initial state 1`] = `
+Array [
+  Object {
+    "active": false,
+    "currentProgress": 0,
+    "name": "Testing",
+    "stopped": 0,
+    "totalPomodoros": 1,
+  },
+  Object {
+    "active": true,
+    "currentProgress": 1,
+    "name": "Active test",
+    "stopped": 1,
+    "totalPomodoros": 3,
+  },
+]
+`;
