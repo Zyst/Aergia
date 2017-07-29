@@ -89,7 +89,7 @@ describe("task", () => {
       ).toBe(false);
     });
 
-    it("should change a task state to inactive", () => {
+    it("should mark deactivated tasks as stopped", () => {
       const activeMockState = task(mockState, activateTask("Save the world"));
 
       expect(
