@@ -89,6 +89,14 @@ describe("task", () => {
       ).toBe(false);
     });
 
+    it("should change a task state to inactive", () => {
+      const activeMockState = task(mockState, activateTask("Save the world"));
+
+      expect(
+        task(activeMockState, deactivateTask("Save the world"))[0].stopped
+      ).toBe(1);
+    });
+
     it("should do nothing to an inactive task", () => {
       expect(task(mockState, deactivateTask("Save the world"))).toEqual(
         mockState
