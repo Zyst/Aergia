@@ -53,13 +53,13 @@ const Task = ({
       {task.active
         ? <span className={buttons}>
             <i
-              onClick={() => completeTask(task.name)}
+              onClick={() => completeTask(task.name || "")}
               role="button"
               tabIndex="-1"
               className="fa fa-check success"
             />
             <i
-              onClick={() => deactivateTask(task.name)}
+              onClick={() => deactivateTask(task.name || "")}
               role="button"
               tabIndex="0"
               className="fa fa-stop danger"
@@ -67,13 +67,13 @@ const Task = ({
           </span>
         : <span className={buttons}>
             <i
-              onClick={() => activateTask(task.name)}
+              onClick={() => activateTask(task.name || "")}
               role="button"
               tabIndex="-1"
               className="fa fa-chevron-up success"
             />
             <i
-              onClick={() => removeTask(task.name)}
+              onClick={() => removeTask(task.name || "")}
               role="button"
               tabIndex="-0"
               className="fa fa-times danger"
