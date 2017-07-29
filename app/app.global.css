@@ -141,12 +141,40 @@ span.task-name {
   font-weight: 500;
 }
 
+.task-bottom-pad:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.pad-task {
+  padding-right: 1em;
+}
+
 span.task-active-stopped {
   color: #ea7d00;
-  padding-right: 1em;
 }
 
 span.task-stopped {
   color: #bc2700;
-  padding-right: 1em;
+}
+
+span > i.fa {
+  padding-right: 0.5em;
+}
+
+i.fa.success {
+  color: #b0dfef;
+}
+
+i.fa.success:hover {
+  color: #caf9ff;
+  text-shadow: 1px 1px 3px black;
+}
+
+i.fa.danger {
+  color: #bc2700;
+}
+
+i.fa.danger:hover {
+  color: #d6411a;
+  text-shadow: 1px 1px 3px black;
 }
