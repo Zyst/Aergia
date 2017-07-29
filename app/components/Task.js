@@ -22,18 +22,20 @@ const Task = ({
   activateTask,
   deactivateTask
 }: Props) => {
-  const { name, stopped } = task.active
+  const { name, stopped, buttons } = task.active
     ? {
         name: "task-active-name",
-        stopped: "task-active-stopped u-pull-right"
+        stopped: "task-active-stopped pad-task u-pull-right",
+        buttons: "pad-task u-pull-right"
       }
     : {
         name: "task-name",
-        stopped: "task-stopped u-pull-right"
+        stopped: "task-stopped pad-task u-pull-right",
+        buttons: "pad-task u-pull-right"
       };
 
   return (
-    <div className="container">
+    <div className="container task-bottom-pad">
       <span className={name}>
         {task.name}
       </span>
@@ -47,6 +49,36 @@ const Task = ({
             Stopped {task.stopped} times
           </span>
         : ""}
+
+      {task.active
+        ? <span className={buttons}>
+            <i
+              onClick={() => completeTask(task.name)}
+              role="button"
+              tabIndex="-1"
+              className="fa fa-check success"
+            />
+            <i
+              onClick={() => deactivateTask(task.name)}
+              role="button"
+              tabIndex="0"
+              className="fa fa-stop danger"
+            />
+          </span>
+        : <span className={buttons}>
+            <i
+              onClick={() => activateTask(task.name)}
+              role="button"
+              tabIndex="-1"
+              className="fa fa-chevron-up success"
+            />
+            <i
+              onClick={() => removeTask(task.name)}
+              role="button"
+              tabIndex="-0"
+              className="fa fa-times danger"
+            />
+          </span>}
     </div>
   );
 };
