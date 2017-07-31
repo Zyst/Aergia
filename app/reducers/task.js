@@ -86,6 +86,8 @@ export default function tasks(
         if (task.name === action.name) {
           return {
             ...task,
+            // We increment stopped if the task was active
+            stopped: task.active ? task.stopped + 1 : task.stopped,
             active: false
           };
         }
