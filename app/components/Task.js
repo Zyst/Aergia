@@ -56,7 +56,7 @@ const Task = ({
             <i
               onClick={() => completeTask(task.name || "")}
               role="button"
-              tabIndex="-1"
+              tabIndex="0"
               className="fa fa-check success"
             />
             <i
@@ -70,13 +70,13 @@ const Task = ({
             <i
               onClick={() => activateTask(task.name || "")}
               role="button"
-              tabIndex="-1"
+              tabIndex="0"
               className="fa fa-chevron-up success"
             />
             <i
               onClick={() => removeTask(task.name || "")}
               role="button"
-              tabIndex="-0"
+              tabIndex="0"
               className="fa fa-times danger"
             />
           </span>}
