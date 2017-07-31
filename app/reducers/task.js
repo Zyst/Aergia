@@ -49,7 +49,10 @@ export default function tasks(
     case ADD_TASK:
       if (
         // If a task with that name doesn't exist already
-        state.filter(task => task.name === action.name).length === 0 &&
+        state.filter(
+          task =>
+            task.name.toLocaleLowerCase() === action.name.toLocaleLowerCase()
+        ).length === 0 &&
         action.payload
       ) {
         return [
