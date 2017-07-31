@@ -126,7 +126,7 @@ select:focus {
   margin-top: 2em;
 }
 
-.active-tasks {
+.active-tasks:not(:empty) {
   background-color: #006494;
   border-top: 2px solid rgba(176, 223, 239, 0.4);
   border-bottom: 2px solid rgba(176, 223, 239, 0.4);
