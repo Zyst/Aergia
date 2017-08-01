@@ -1,12 +1,12 @@
 // @flow
 import React from "react";
-import Timer from "../components/Timer";
+import TimerContainer from "./TimerContainer";
 import Add from "../containers/Add";
 import TasksContainer from "../containers/TasksContainer";
 
 const Pomodoro = () =>
   <div>
-    <Timer minutes={25} break={5} />
+    <TimerContainer />
     <Add />
     <TasksContainer />
   </div>;
