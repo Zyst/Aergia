@@ -1,6 +1,7 @@
 // @flow
 import { connect } from "react-redux";
 import Timer from "../components/Timer";
+import * as taskActions from "../actions/task";
 import type { taskStateType } from "../reducers/task";
 
 const mapStateToProps = ({ task }: { task: taskStateType }) => ({
@@ -9,7 +10,12 @@ const mapStateToProps = ({ task }: { task: taskStateType }) => ({
   break: 5
 });
 
-const mapDispatchToProps = () => ({});
+/* eslint-disable flowtype/no-weak-types */
+const mapDispatchToProps = (dispatch: Function) => ({
+  pomodoroDone() {
+    dispatch(taskActions.pomodoroDone());
+  }
+});
 
 const TimerContainer = connect(mapStateToProps, mapDispatchToProps)(Timer);
 

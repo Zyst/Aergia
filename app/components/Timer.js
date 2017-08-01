@@ -4,7 +4,8 @@ import React, { Component } from "react";
 type Props = {
   active: boolean,
   minutes: number,
-  break: number
+  break: number,
+  pomodoroDone: () => void
 };
 
 type State = {
@@ -83,6 +84,11 @@ class Timer extends Component {
     if (this.state.time > 1) {
       this.setState({ time: this.state.time - 1 });
     } else {
+      // If we're not on a break we send a pomodoro done dispatch
+      if (!this.state.break) {
+        this.props.pomodoroDone();
+      }
+
       this.handleRestart();
     }
   }
