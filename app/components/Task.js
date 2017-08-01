@@ -55,12 +55,14 @@ const Task = ({
         ? <span className={buttons}>
             <i
               onClick={() => completeTask(task.name || "")}
+              onKeyPress={() => completeTask(task.name || "")}
               role="button"
               tabIndex="0"
               className="fa fa-check success"
             />
             <i
               onClick={() => deactivateTask(task.name || "")}
+              onKeyPress={() => deactivateTask(task.name || "")}
               role="button"
               tabIndex="0"
               className="fa fa-stop danger"
@@ -69,12 +71,14 @@ const Task = ({
         : <span className={buttons}>
             <i
               onClick={() => activateTask(task.name || "")}
+              onKeyPress={() => activateTask(task.name || "")}
               role="button"
               tabIndex="0"
               className="fa fa-chevron-up success"
             />
             <i
               onClick={() => removeTask(task.name || "")}
+              onKeyPress={() => removeTask(task.name || "")}
               role="button"
               tabIndex="0"
               className="fa fa-times danger"
