@@ -5,11 +5,10 @@ import { createHashHistory } from "history";
 import { routerMiddleware, routerActions } from "react-router-redux";
 import rootReducer from "../reducers";
 import * as taskActions from "../actions/task";
-import type { taskStateType } from "../reducers/task";
 
 const history = createHashHistory();
 
-const configureStore = (initialState?: taskStateType) => {
+const configureStore = initialState => {
   // Redux Configuration
   const middleware = [];
   const enhancers = [];
