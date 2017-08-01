@@ -4,7 +4,8 @@ import {
   removeTask,
   completeTask,
   activateTask,
-  deactivateTask
+  deactivateTask,
+  pomodoroDone
 } from "../../app/actions/task";
 
 describe("task", () => {
@@ -107,6 +108,18 @@ describe("task", () => {
       const state = task(mockState, addTask("Another one", 1));
 
       expect(task(state, deactivateTask("Save the world"))).toEqual(state);
+    });
+  });
+
+  describe("pomodoro done", () => {
+    it("should add one to all active tasks", () => {
+      const state = task(mockState, activateTask("Save the world"));
+
+      expect(task(state, pomodoroDone())[0].currentProgress).toBe(1);
+    });
+
+    it("should do nothing to inactive tasks", () => {
+      expect(task(mockState, pomodoroDone())[0].currentProgress).toBe(0);
     });
   });
 });

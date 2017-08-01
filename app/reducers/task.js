@@ -4,7 +4,8 @@ import {
   COMPLETE_TASK,
   REMOVE_TASK,
   ACTIVATE_TASK,
-  DEACTIVATE_TASK
+  DEACTIVATE_TASK,
+  POMODORO_DONE
 } from "../actions/task";
 
 export type taskStateType = Array<{
@@ -96,6 +97,17 @@ export default function tasks(
             // We increment stopped if the task was active
             stopped: task.active ? task.stopped + 1 : task.stopped,
             active: false
+          };
+        }
+        return task;
+      });
+
+    case POMODORO_DONE:
+      return state.map(task => {
+        if (task.active) {
+          return {
+            ...task,
+            currentProgress: task.currentProgress + 1
           };
         }
         return task;
