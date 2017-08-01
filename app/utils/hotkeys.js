@@ -4,7 +4,7 @@ const hotkeys = {
     add: {
       addButton: {
         callAdd: {
-          key: "enter",
+          key: "ctrl+enter",
           description: 'Calls the "add" function, sending us into the input'
         }
       },
