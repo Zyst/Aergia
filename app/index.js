@@ -9,7 +9,7 @@ import "./app.global.css";
 const store = configureStore(getFile());
 
 store.subscribe(() => {
-  saveFile(store.getState());
+  saveFile({ task: [...store.getState().task] });
 });
 
 render(
