@@ -29,12 +29,14 @@ exports[`active 1`] = `
     <i
       className="fa fa-check success"
       onClick={[Function]}
+      onKeyPress={[Function]}
       role="button"
       tabIndex="0"
     />
     <i
       className="fa fa-stop danger"
       onClick={[Function]}
+      onKeyPress={[Function]}
       role="button"
       tabIndex="0"
     />
@@ -65,12 +67,14 @@ exports[`can't stop won't stop 1`] = `
     <i
       className="fa fa-check success"
       onClick={[Function]}
+      onKeyPress={[Function]}
       role="button"
       tabIndex="0"
     />
     <i
       className="fa fa-stop danger"
       onClick={[Function]}
+      onKeyPress={[Function]}
       role="button"
       tabIndex="0"
     />
@@ -107,12 +111,14 @@ exports[`inactive 1`] = `
     <i
       className="fa fa-chevron-up success"
       onClick={[Function]}
+      onKeyPress={[Function]}
       role="button"
       tabIndex="0"
     />
     <i
       className="fa fa-times danger"
       onClick={[Function]}
+      onKeyPress={[Function]}
       role="button"
       tabIndex="0"
     />
