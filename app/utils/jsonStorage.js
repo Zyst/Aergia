@@ -1,4 +1,3 @@
-// @flow
 import electron from "electron";
 import path from "path";
 import fs from "fs";
