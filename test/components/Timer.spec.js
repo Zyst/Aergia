@@ -1,14 +1,22 @@
 import React from "react";
+import { spy } from "sinon";
 import { shallow } from "enzyme";
 import renderer from "react-test-renderer";
 import Timer, { zeroPadding, displayTime } from "../../app/components/Timer";
 
 const setup = () => {
-  const component = shallow(<Timer active minutes={25} break={5} />);
+  const actions = {
+    pomodoroDone: spy()
+  };
+
+  const component = shallow(
+    <Timer active minutes={25} break={5} {...actions} />
+  );
 
   return {
     component,
-    timer: component.find(".timer")
+    timer: component.find(".timer"),
+    actions
   };
 };
 
@@ -80,6 +88,15 @@ describe("Timer component", () => {
 
     component.instance().reduceTime();
     expect(component.state().time).toBe(25 * 60);
+  });
+
+  it("Should send pomodoro done if we go below 1 on normal", () => {
+    const { component, actions } = setup();
+
+    component.state().time = 1;
+
+    component.instance().reduceTime();
+    expect(actions.pomodoroDone.called).toBe(true);
   });
 
   describe("Zero padding", () => {
