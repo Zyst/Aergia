@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add Input component should match snapshot 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <input
+    autoFocus={true}
+    className="mousetrap"
+    placeholder="Task name"
+    type="text"
+  />
+  ;
+  <span
+    className="pomodoro-placerholder"
+  >
+    1
+     Pomodoros
+  </span>
+</form>
+`;

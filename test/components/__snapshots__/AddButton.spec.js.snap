@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add Button component Should match snapshot 1`] = `
+<button
+  className="center-block button-primary"
+  onClick={[Function]}
+>
+  Add task
+</button>
+`;

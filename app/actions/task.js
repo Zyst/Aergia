@@ -6,6 +6,7 @@ export const COMPLETE_TASK = "COMPLETE_TASK";
 export const REMOVE_TASK = "REMOVE_TASK";
 export const ACTIVATE_TASK = "ACTIVATE_TASK";
 export const DEACTIVATE_TASK = "DEACTIVATE_TASK";
+export const POMODORO_DONE = "POMODORO_DONE";
 
 export function addTask(name: string, totalPomodoros: number): actionType {
   return {
@@ -45,6 +46,13 @@ export function deactivateTask(name: string): actionType {
   return {
     type: DEACTIVATE_TASK,
     name,
+    payload: {}
+  };
+}
+
+export function pomodoroDone(): actionType {
+  return {
+    type: POMODORO_DONE,
     payload: {}
   };
 }

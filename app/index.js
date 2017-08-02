@@ -3,10 +3,14 @@ import { render } from "react-dom";
 import { AppContainer } from "react-hot-loader";
 import Root from "./containers/Root";
 import { configureStore, history } from "./store/configureStore";
+import { getFile, saveFile } from "./utils/jsonStorage";
 import "./app.global.css";
 
-// TODO: Get old session here
-const store = configureStore();
+const store = configureStore(getFile());
+
+store.subscribe(() => {
+  saveFile({ task: [...store.getState().task] });
+});
 
 render(
   <AppContainer>

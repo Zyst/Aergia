@@ -4,7 +4,8 @@ import {
   COMPLETE_TASK,
   REMOVE_TASK,
   ACTIVATE_TASK,
-  DEACTIVATE_TASK
+  DEACTIVATE_TASK,
+  POMODORO_DONE
 } from "../actions/task";
 
 export type taskStateType = Array<{
@@ -34,7 +35,14 @@ export default function tasks(
     case ADD_TASK:
       if (
         // If a task with that name doesn't exist already
-        state.filter(task => task.name === action.name).length === 0 &&
+        state.filter(task => {
+          const taskName = task.name || "";
+          const actionName = action.name || "";
+
+          return (
+            taskName.toLocaleLowerCase() === actionName.toLocaleLowerCase()
+          );
+        }).length === 0 &&
         action.payload
       ) {
         return [
@@ -52,8 +60,6 @@ export default function tasks(
 
     // Although this is currently the same as remove, that will change later
     case COMPLETE_TASK:
-      return state.filter(task => task.name !== action.name);
-
     case REMOVE_TASK:
       return state.filter(task => task.name !== action.name);
 
@@ -73,7 +79,20 @@ export default function tasks(
         if (task.name === action.name) {
           return {
             ...task,
+            // We increment stopped if the task was active
+            stopped: task.active ? task.stopped + 1 : task.stopped,
             active: false
+          };
+        }
+        return task;
+      });
+
+    case POMODORO_DONE:
+      return state.map(task => {
+        if (task.active) {
+          return {
+            ...task,
+            currentProgress: task.currentProgress + 1
           };
         }
         return task;

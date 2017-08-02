@@ -10,6 +10,7 @@
  * Dark Text: #7c7c7c
  * Lighter Dark Text: #a8a8a8
  * Light Text: #cdcdcd
+ * Errors: #bc2700 & #ea7d00
  */
 
 body {
@@ -37,6 +38,20 @@ button {
   font-weight: bold;
 }
 
+.break {
+  color: #00863a;
+}
+
+h1.timer {
+  font-size: 5rem;
+}
+
+@media (min-width: 550px) {
+  h1.timer {
+    font-size: 6rem;
+  }
+}
+
 /* Thanks bootstrap */
 .center-block {
   display: block;
@@ -51,7 +66,8 @@ button.button-primary {
   border-radius: 0;
 }
 
-button.button-primary:hover {
+button.button-primary:hover,
+button.button-primary:focus {
   background-color: #caf9ff;
   border-color: #caf9ff;
 }
@@ -97,4 +113,69 @@ select:focus {
 ::-webkit-input-placeholder {
   font-style: italic;
   color: #a8a8a8;
+}
+
+.pomodoro-placerholder {
+  margin: 1em;
+}
+
+/**
+ * Active and inactive divs
+ */
+.tasks {
+  padding: 0.7em;
+  margin-top: 2em;
+}
+
+.active-tasks:not(:empty) {
+  background-color: #006494;
+  border-top: 2px solid rgba(176, 223, 239, 0.4);
+  border-bottom: 2px solid rgba(176, 223, 239, 0.4);
+  color: #cdcdcd;
+}
+
+span.task-active-name {
+  font-weight: 500;
+}
+
+span.task-name {
+  font-weight: 500;
+}
+
+.task-bottom-pad:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.pad-task {
+  padding-right: 1em;
+}
+
+span.task-active-stopped {
+  color: #ea7d00;
+}
+
+span.task-stopped {
+  color: #bc2700;
+}
+
+span > i.fa {
+  padding-right: 0.5em;
+}
+
+i.fa.success {
+  color: #b0dfef;
+}
+
+i.fa.success:hover {
+  color: #caf9ff;
+  text-shadow: 1px 1px 3px black;
+}
+
+i.fa.danger {
+  color: #bc2700;
+}
+
+i.fa.danger:hover {
+  color: #d6411a;
+  text-shadow: 1px 1px 3px black;
 }
